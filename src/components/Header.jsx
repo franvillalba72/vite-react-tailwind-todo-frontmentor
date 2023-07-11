@@ -1,4 +1,5 @@
 import IconMoon from "./icons/IconMoon";
+import IconSun from "./icons/IconSun";
 
 const Header = () => {
     return (
