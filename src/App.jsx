@@ -72,7 +72,7 @@ const App = () => {
     }
 
     return (
-        <div className="min-h-screen bg-[url('./assets/images/bg-mobile-light.jpg')] bg-no-repeat bg-contain bg-gray-200 sm:bg-[url('./assets/images/bg-desktop-light.jpg')]">
+        <div className="min-h-screen bg-[url('./assets/images/bg-mobile-light.jpg')] dark:bg-[url('./assets/images/bg-mobile-dark.jpg')] bg-no-repeat bg-contain bg-gray-200 dark:bg-gray-950 sm:bg-[url('./assets/images/bg-desktop-light.jpg')] dark:sm:bg-[url('./assets/images/bg-desktop-dark.jpg')] transition-all duration-1000">
 
             <Header />
 
@@ -86,7 +86,7 @@ const App = () => {
                 <TodoFilter setFilter={setFilter} filter={filter} />
             </main>
 
-            <footer className=" text-center container mx-auto px-4 mt-8">
+            <footer className="dark:text-gray-400 transition-all duration-1000 text-center container mx-auto px-4 mt-8">
                 Drag and drop to reorder list
             </footer>
         </div>
