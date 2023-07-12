@@ -5,6 +5,7 @@ import IconSun from "./icons/IconSun";
 const initialDarkMode = document.documentElement.className.includes("dark");
 
 const Header = () => {
+    // Se puede hacer con useRef pero así es mejor
     const [darkMode, setDarkMode] = useState(initialDarkMode);
 
     // Este código se ejecuta cada vez que cambia el darkMode
