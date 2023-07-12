@@ -12,7 +12,7 @@ const TodoItem = ({todo, removeTodo, updateTodo}) => {
                 }`}>
                 { completed && <IconCheck /> }
             </button>
-            <p className={`text-gray-600 grow ${completed && "line-through"}`}>{title}</p>
+            <p className={`text-gray-600 dark:text-gray-400 transition-all duration-1000 grow ${completed && "line-through"}`}>{title}</p>
             <button onClick={() => (removeTodo(id))} className="flex-none"><IconCross /></button>
         </article>
     );
