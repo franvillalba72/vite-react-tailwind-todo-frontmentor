@@ -1,19 +1,25 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Header from "./components/Header";
 import TodoComputed from "./components/TodoComputed";
 import TodoCreate from "./components/TodoCreate";
 import TodoFilter from "./components/TodoFilter";
 import TodoList from "./components/TodoList";
 
-const InitialStateTodos = [
-    { id: 1, title: 'Ir al gimnasio', completed: false },
-    { id: 2, title: 'Completar curso react', completed: true },
-    { id: 3, title: 'Recoger hijo de academia', completed: false },
-    { id: 4, title: 'Meditación ', completed: true },
-]
+// const InitialStateTodos = [
+//     { id: 1, title: 'Ir al gimnasio', completed: false },
+//     { id: 2, title: 'Completar curso react', completed: true },
+//     { id: 3, title: 'Recoger hijo de academia', completed: false },
+//     { id: 4, title: 'Meditación ', completed: true },
+// ]
+
+const InitialStateTodos = JSON.parse(localStorage.getItem('todos')) || [];
 
 const App = () => {
     const [todos, setTodos] = useState(InitialStateTodos);
+
+    useEffect(() => {
+        localStorage.setItem('todos', JSON.stringify(todos));
+    }, [todos]);
 
     const createTodo = (title) => {
         const newTodo = {
@@ -72,11 +78,11 @@ const App = () => {
     }
 
     return (
-        <div className="min-h-screen bg-[url('./assets/images/bg-mobile-light.jpg')] dark:bg-[url('./assets/images/bg-mobile-dark.jpg')] bg-no-repeat bg-contain bg-gray-200 dark:bg-gray-950 sm:bg-[url('./assets/images/bg-desktop-light.jpg')] dark:sm:bg-[url('./assets/images/bg-desktop-dark.jpg')] transition-all duration-1000">
+        <div className="min-h-screen bg-[url('./assets/images/bg-mobile-light.jpg')] dark:bg-[url('./assets/images/bg-mobile-dark.jpg')] bg-no-repeat bg-contain bg-gray-200 dark:bg-gray-950 md:bg-[url('./assets/images/bg-desktop-light.jpg')] dark:md:bg-[url('./assets/images/bg-desktop-dark.jpg')] transition-all duration-1000">
 
             <Header />
 
-            <main className="container mx-auto px-4 mt-8">
+            <main className="container mx-auto px-4 mt-8 md:max-w-xl">
                 <TodoCreate createTodo={createTodo} />
 
                 <TodoList todos={filteredTodos()} removeTodo={removeTodo} updateTodo={updateTodo} />
